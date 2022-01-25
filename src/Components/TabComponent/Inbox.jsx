@@ -1,24 +1,24 @@
-import React, {useEffect} from 'react';
-import "../../css/tab.css"
-import axios from 'axios';
+import React, { useEffect } from "react";
+import "../../css/tab.css";
+import useApplicationData from "../../hooks/useApplicationData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 
 export default function Inbox() {
+  const { allCalls, isArchived } = useApplicationData();
 
-  // manage all activites in a state
+  console.log(allCalls);
 
-  useEffect(() => {
-    // make a get request to the api to retrive all activities
-    axios.get('https://aircall-job.herokuapp.com/activities')
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
-  }, [])
+  const organizedCalls = isArchived(allCalls);
+  console.log(organizedCalls);
 
   return (
-  <div className="inbox-container">
-    <div>Archive all calls</div>
-    <div>Call #1</div>
-  </div>
+    <div className="inbox-container">
+      <div className="archive-all">
+        <FontAwesomeIcon icon={faBoxOpen} />
+        Archive all calls
+      </div>
+      <div>Call #1</div>
+    </div>
   );
 }
