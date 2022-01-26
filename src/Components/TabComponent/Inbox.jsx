@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons";
 import EachCall from "./EachCall.jsx";
 import ConfirmationPopup from "./ConfirmationPopUp.jsx";
+import axios from "axios";
 
 export default function Inbox() {
   // this hook is used to force a re-render once a user archives or un-archives a call
@@ -16,6 +17,24 @@ export default function Inbox() {
   // holds both archived (index 0) and unarchived calls (index 1), will access only unarchived calls in this component
   const organizedCalls = isArchived(allCalls);
   const unarchivedCalls = organizedCalls[1];
+
+  // function that handles archiving all calls
+  const handleArchiveAll = () => {
+    // loop through the un-archived calls and send an axios request for EACH call id to update them in the API backend
+    for (const call of unarchivedCalls) {
+      axios
+        .post(`https://aircall-job.herokuapp.com/activities/${call.id}`, {
+          is_archived: true
+        })
+        .then((res) => {
+          // close the popup once archived
+          setConfirmationPopUp(false);
+          // force re-render once archived by adding +1 to the value state
+          setValue((value) => value + 1);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   // map through the unarchived calls and render this array in JSX
   const unarchivedCallList = unarchivedCalls.map((call) => {
@@ -48,6 +67,7 @@ export default function Inbox() {
         trigger={confirmationPopUp}
         setTrigger={setConfirmationPopUp}
         is_archived={false}
+        handleArchiveAll={handleArchiveAll}
       >
         <div className="info-container">
           <h3>Are you sure you want to archive all calls?</h3>
