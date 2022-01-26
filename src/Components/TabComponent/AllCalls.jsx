@@ -12,9 +12,7 @@ export default function AllCalls() {
 
   // holds both archived (index 0) and unarchived calls (index 1), will only access archived calls here
   const organizedCalls = isArchived(allCalls);
-  console.log(organizedCalls);
   const archivedCalls = organizedCalls[0];
-  console.log(archivedCalls);
 
   // map through the unarchived calls and render this array in JSX
   const archivedCallList = archivedCalls.map((call) => {

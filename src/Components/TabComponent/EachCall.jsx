@@ -53,31 +53,33 @@ export default function EachCall(props) {
   // function that archives the selected call
   const handleArchive = () => {
     // make an axios post request to the API backend to update the selected call
-    axios.post(`https://aircall-job.herokuapp.com/activities/${id}`, {
-      is_archived: true
-    })
-      .then(res => {
+    axios
+      .post(`https://aircall-job.herokuapp.com/activities/${id}`, {
+        is_archived: true,
+      })
+      .then((res) => {
         // close the popup once archived
         setPopUp(false);
         // force re-render once archived by adding +1 to the value state
-        props.setValue(value => value + 1);
+        props.setValue((value) => value + 1);
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   // function that un-archives the selected call
   const handleUnArchive = () => {
     // make an axios post request to the API backend to update the selected call
-    axios.post(`https://aircall-job.herokuapp.com/activities/${id}`, {
-      is_archived: false
-    })
-      .then(res => {
+    axios
+      .post(`https://aircall-job.herokuapp.com/activities/${id}`, {
+        is_archived: false,
+      })
+      .then((res) => {
         // close the popup once un-archived
         setPopUp(false);
         // force re-render once un-archived by adding +1 to the value state
-        props.setValue(value => value + 1);
+        props.setValue((value) => value + 1);
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -100,7 +102,13 @@ export default function EachCall(props) {
           <FontAwesomeIcon icon={faInfoCircle} />
         </div>
       </div>
-      <Popup trigger={popUp} setTrigger={setPopUp} is_archived={is_archived} handleArchive={handleArchive} handleUnArchive={handleUnArchive}>
+      <Popup
+        trigger={popUp}
+        setTrigger={setPopUp}
+        is_archived={is_archived}
+        handleArchive={handleArchive}
+        handleUnArchive={handleUnArchive}
+      >
         <div className="info-container">
           <div>
             {month}, {day} {year} - {time}
