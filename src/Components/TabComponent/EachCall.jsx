@@ -56,9 +56,9 @@ export default function EachCall(props) {
           {month}, {day} {year}
         </span>
       </div>
-      <div className="call archive-all">
+      <div className="call archive-all" onClick={() => setPopUp(true)}>
         <FontAwesomeIcon icon={faPhoneAlt} size="lg" />
-        <div className="call-info" onClick={() => setPopUp(true)}>
+        <div className="call-info">
           <div className="call-from">{from}</div>
           {/* if call to information is null, display unknown */}
           {to === null && <div className="call-to">Unknown</div>}
@@ -66,8 +66,15 @@ export default function EachCall(props) {
         </div>
         <div className="call-time">{time}</div>
       </div>
-      <Popup trigger={popUp} setTrigger={setPopUp} >
-        <h3>my popup</h3>
+      <Popup trigger={popUp} setTrigger={setPopUp}>
+        <div>
+          {month}, {day} {year} - {time}
+        </div>
+        <div>From: {from}</div>
+        <div>To: {to}</div>
+        <div>{direction.toUpperCase()} Call - ({call_type})</div>
+        <div>{duration} seconds</div>
+        <div>via {via}</div>
       </Popup>
     </div>
   );
