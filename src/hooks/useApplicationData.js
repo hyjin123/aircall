@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useApplicationData() {
+export default function useApplicationData(value) {
   // manage all the calls in a state
   const [allCalls, setAllCalls] = useState([]);
   const [unarchivedCalls, setUnarchivedCalls] = useState([]);
   const [archivedCalls, setArchivedCalls] = useState([]);
 
   // make a get request to the api to retrive all the calls
+  // this useEffect is triggered once again as the "value" changes which is a hook that changes state once user archives or un-archives
   useEffect(() => {
     axios
       .get("https://aircall-job.herokuapp.com/activities")
@@ -15,7 +16,7 @@ export default function useApplicationData() {
         setAllCalls(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [value]);
 
   // function that separates unarchived and archived calls
   const isArchived = (allCalls) => {

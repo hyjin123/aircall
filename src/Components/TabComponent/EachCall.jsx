@@ -59,7 +59,8 @@ export default function EachCall(props) {
       .then(res => {
         // close the popup once archived
         setPopUp(false);
-        // force re-render once archived
+        // force re-render once archived by adding +1 to the value state
+        props.setValue(value => value + 1);
       })
       .catch(err => console.log(err))
   };
@@ -73,7 +74,8 @@ export default function EachCall(props) {
       .then(res => {
         // close the popup once un-archived
         setPopUp(false);
-        // force re-render once un-archived
+        // force re-render once un-archived by adding +1 to the value state
+        props.setValue(value => value + 1);
       })
       .catch(err => console.log(err))
   };

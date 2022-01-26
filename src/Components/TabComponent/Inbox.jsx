@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/tab.css";
 import useApplicationData from "../../hooks/useApplicationData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,9 @@ import { faFolderOpen } from "@fortawesome/free-solid-svg-icons";
 import EachCall from "./EachCall.jsx";
 
 export default function Inbox() {
-  const { allCalls, isArchived } = useApplicationData();
+  // this hook is used to force a re-render once a user archives or un-archives a call
+  const [value, setValue] = useState(0);
+  const { allCalls, isArchived } = useApplicationData(value);
 
   // holds both archived (index 0) and unarchived calls (index 1), will access only unarchived calls in this component
   const organizedCalls = isArchived(allCalls);
@@ -27,6 +29,8 @@ export default function Inbox() {
         is_archived={call.is_archived}
         to={call.to}
         via={call.via}
+        value={value}
+        setValue={setValue}
       />
     );
   });
