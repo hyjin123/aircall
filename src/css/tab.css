@@ -4,15 +4,22 @@
 }
 
 .archive-all {
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(217, 217, 217, 1);
   border-radius: 15px;
-  padding: 1.5em 0;
+  padding: 1.2em 0;
   padding-left: 1em;
   margin: 1em 1em;
 }
 
 .archive-all:hover {
   cursor: pointer;
-  background-color: #9cffb9;
+  background-color: #A8D5BAFF;
 }
 
+.archive-icon {
+  margin-right: 0.5em;
+}
+
+.each-call-container {
+  overflow: scroll;
+}

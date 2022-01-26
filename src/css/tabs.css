@@ -13,12 +13,12 @@ ul.tab-nav li {
 }
 
 ul.tab-nav li:hover {
-  border-bottom: 3px solid #4bde5a;
+  border-bottom: 3px solid #A8D5BAFF;
   cursor: pointer;
 }
 
 ul.tab-nav li.active {
   color: rgb(0, 0, 0);
-  border-bottom: 3px solid #4bde5a;
+  border-bottom: 3px solid #A8D5BAFF;
   font-weight: bold;
 }
