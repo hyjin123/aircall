@@ -1,6 +1,7 @@
 .inbox-container {
   display: flex;
   flex-direction: column;
+  padding: 0 8px;
 }
 
 .archive-all {
@@ -29,8 +30,7 @@
 .call-date {
   text-align: center;
   font-size: 0.8em;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 25px 10px;
   /* this is to make the horizontal line on each side of the date */
   line-height: 0.1em;
   border-bottom: 1px solid rgba(217, 217, 217, 0.8);

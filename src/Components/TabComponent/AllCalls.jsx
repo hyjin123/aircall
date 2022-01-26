@@ -36,7 +36,7 @@ export default function AllCalls() {
     <div className="inbox-container">
       <div className="archive-all">
         <FontAwesomeIcon icon={faFolderOpen} className="archive-icon"/> 
-        <span>Archive all calls</span>
+        <span>Un-Archive all calls</span>
       </div>
       <div className="each-call-container">
         {archivedCallList}

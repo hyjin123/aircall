@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import Popup from "./Popup.jsx";
 
 export default function EachCall(props) {
+  // state for pop up
+  const [popUp, setPopUp] = useState(false);
+
   // destructure all props
   const {
     id,
@@ -18,9 +22,8 @@ export default function EachCall(props) {
 
   // change the format from string to date data type
   const date = new Date(created_at);
-  console.log(date);
 
-  // array used to display month in words and not a number
+  // array used to display month as a string and not a number
   const months = [
     "January",
     "February",
@@ -55,7 +58,7 @@ export default function EachCall(props) {
       </div>
       <div className="call archive-all">
         <FontAwesomeIcon icon={faPhoneAlt} size="lg" />
-        <div className="call-info">
+        <div className="call-info" onClick={() => setPopUp(true)}>
           <div className="call-from">{from}</div>
           {/* if call to information is null, display unknown */}
           {to === null && <div className="call-to">Unknown</div>}
@@ -63,6 +66,9 @@ export default function EachCall(props) {
         </div>
         <div className="call-time">{time}</div>
       </div>
+      <Popup trigger={popUp} setTrigger={setPopUp} >
+        <h3>my popup</h3>
+      </Popup>
     </div>
   );
 }
