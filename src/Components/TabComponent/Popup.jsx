@@ -14,8 +14,16 @@ export default function Popup(props) {
         </button>
         {props.children}
         <div className="popup-buttons">
-          <button className="close-button2" onClick={() => props.setTrigger(false)}>Close</button>
-          <button className="archive-button">Archive</button>
+          <button
+            className="close-button2"
+            onClick={() => props.setTrigger(false)}
+          >
+            Close
+          </button>
+          {/* if the call is un-archived, make the button archive */}
+          {props.is_archived === false && <button className="archive-button" onClick={props.handleArchive}>Archive</button>}
+          {/* if the call is archived, make the button un-archive */}
+          {props.is_archived === true && <button className="archive-button" onClick={props.handleUnArchive}>Un-Archive</button>}
         </div>
       </div>
     </div>

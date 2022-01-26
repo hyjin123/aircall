@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneAlt, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import Popup from "./Popup.jsx";
+import axios from "axios";
 
 export default function EachCall(props) {
   // state for pop up
@@ -49,6 +50,34 @@ export default function EachCall(props) {
     minute: "2-digit",
   });
 
+  // function that archives the selected call
+  const handleArchive = () => {
+    // make an axios post request to the API backend to update the selected call
+    axios.post(`https://aircall-job.herokuapp.com/activities/${id}`, {
+      is_archived: true
+    })
+      .then(res => {
+        // close the popup once archived
+        setPopUp(false);
+        // force re-render once archived
+      })
+      .catch(err => console.log(err))
+  };
+
+  // function that un-archives the selected call
+  const handleUnArchive = () => {
+    // make an axios post request to the API backend to update the selected call
+    axios.post(`https://aircall-job.herokuapp.com/activities/${id}`, {
+      is_archived: false
+    })
+      .then(res => {
+        // close the popup once un-archived
+        setPopUp(false);
+        // force re-render once un-archived
+      })
+      .catch(err => console.log(err))
+  };
+
   return (
     <div>
       <div className="call-date">
@@ -64,17 +93,24 @@ export default function EachCall(props) {
           {to === null && <div className="call-to">Unknown</div>}
           <div className="call-to">{to}</div>
         </div>
-        <div className="call-time">{time}</div>
-      </div>
-      <Popup trigger={popUp} setTrigger={setPopUp}>
-        <div>
-          {month}, {day} {year} - {time}
+        <div className="call-time">
+          <div>{time}</div>
+          <FontAwesomeIcon icon={faInfoCircle} />
         </div>
-        <div>From: {from}</div>
-        <div>To: {to}</div>
-        <div>{direction.toUpperCase()} Call - ({call_type})</div>
-        <div>{duration} seconds</div>
-        <div>via {via}</div>
+      </div>
+      <Popup trigger={popUp} setTrigger={setPopUp} is_archived={is_archived} handleArchive={handleArchive} handleUnArchive={handleUnArchive}>
+        <div className="info-container">
+          <div>
+            {month}, {day} {year} - {time}
+          </div>
+          <div>From: {from}</div>
+          <div>To: {to}</div>
+          <div>
+            {direction.toUpperCase()} Call - ({call_type})
+          </div>
+          <div>{duration} seconds</div>
+          <div>via {via}</div>
+        </div>
       </Popup>
     </div>
   );

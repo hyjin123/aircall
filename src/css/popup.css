@@ -12,7 +12,7 @@
 
 .popup-inner {
   position: relative;
-  padding: 30px;
+  padding: 10px;
   width: 25%;
   background-color: white;
   border: 1px solid #919191;
@@ -69,4 +69,12 @@
 .popup-buttons .close-button2:hover {
   cursor: pointer;
   background-color: #5c5c5c;
+}
+
+.info-container {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
 }

@@ -57,8 +57,17 @@
   padding-bottom: 5px;
 }
 
-.call-to, .call-time {
+.call-to {
   color: #919191;
+}
+
+.call-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #919191;
+  gap: 5px;
 }
 
 /* css for styling the scrollbar */
