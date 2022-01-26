@@ -40,7 +40,7 @@ export default function EachCall(props) {
   const month = months[date.getMonth()];
   const year = date.getFullYear();
   const day = date.getDay();
-  // display the time in string, without the seconds and with AM/PM
+  // display the time in string, without the seconds and with AM/PM. The time is in local eastern time for now
   const time = date.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
@@ -49,9 +49,9 @@ export default function EachCall(props) {
   return (
     <div>
       <div className="call-date">
-        <p>
+        <span>
           {month}, {day} {year}
-        </p>
+        </span>
       </div>
       <div className="call archive-all">
         <FontAwesomeIcon icon={faPhoneAlt} size="lg" />
@@ -61,7 +61,7 @@ export default function EachCall(props) {
           {to === null && <div className="call-to">Unknown</div>}
           <div className="call-to">{to}</div>
         </div>
-        <div>{time}</div>
+        <div className="call-time">{time}</div>
       </div>
     </div>
   );
