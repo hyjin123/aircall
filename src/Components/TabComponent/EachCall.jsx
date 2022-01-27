@@ -95,8 +95,8 @@ export default function EachCall(props) {
           {/* if the call is answered, number is green, if the call is missed, number is red */}
           <div className={`call-from ${call_type === "answered" ? "call-answered" : "call-missed"}`}>{from}</div>
           {/* if call to information is null, display unknown */}
-          {to === null && <div className="call-to">Unknown</div>}
-          <div className="call-to">{to}</div>
+          {call_type === "answered" && <div className="call-to">{`called ${to === null ? 'Unknown' : to}`}</div>}
+          {call_type === "missed" && <div className="call-to">{`tried to call ${to === null ? 'Unknown' : to}`}</div>}
         </div>
         <div className="call-time">
           <div>{time}</div>
