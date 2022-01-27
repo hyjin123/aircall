@@ -91,6 +91,7 @@ export default function EachCall(props) {
       </div>
       <div className="call archive-all" onClick={() => setPopUp(true)}>
         <FontAwesomeIcon icon={faPhoneAlt} size="lg" />
+        <h1>hello</h1>
         <div className="call-info">
           {/* if the call is answered, number is green, if the call is missed, number is red */}
           <div className={`call-from ${call_type === "answered" ? "call-answered" : "call-missed"}`}>{from}</div>
