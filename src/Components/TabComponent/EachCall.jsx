@@ -50,6 +50,10 @@ export default function EachCall(props) {
     minute: "2-digit",
   });
 
+  // converts seconds to minutes and seconds
+  const minutes = Math.floor(duration / 60);
+  const convertedDuration = (minutes <= 1 ? minutes + " minute " : minutes + " minutes " ) + (duration % 60 ? duration % 60 + " seconds" : "00 second")
+
   // function that archives the selected call
   const handleArchive = () => {
     // make an axios post request to the API backend to update the selected call
@@ -118,11 +122,11 @@ export default function EachCall(props) {
           <div className="inner-info"><span>From:</span> {from}</div>
           {to !== null && <div className="inner-info"><span>To:</span> {to}</div>}
           {to === null && <div className="inner-info"><span>To:</span> Unknown</div>}
+          <div className="inner-info"><span>via:</span> {via}</div>
           <div className="inner-info">
             {direction.toUpperCase()} Call - ({call_type})
           </div>
-          <div className="inner-info">{duration} seconds</div>
-          <div className="inner-info"><span>via:</span> {via}</div>
+          <div className="inner-info">{convertedDuration}</div>
         </div>
       </Popup>
     </div>
