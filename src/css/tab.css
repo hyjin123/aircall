@@ -57,6 +57,14 @@
   padding-bottom: 5px;
 }
 
+.call-missed {
+  color: #e32727;
+}
+
+.call-answered {
+  color: #2e9e5b;
+}
+
 .call-to {
   color: #919191;
 }
@@ -84,3 +92,6 @@
   border-radius: 20px;
 }
 
+.info-circle {
+  color: #0078de;
+}

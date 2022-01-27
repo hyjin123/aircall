@@ -23,7 +23,7 @@ export default function ConfirmationPopup(props) {
           {/* if the call is un-archived, make the button archive */}
           {props.is_archived === false && <button className="archive-button" onClick={props.handleArchiveAll}>Archive All Calls</button>}
           {/* if the call is archived, make the button un-archive */}
-          {props.is_archived === true && <button className="archive-button" onClick={props.handleUnArchiveAll}>Un-Archive</button>}
+          {props.is_archived === true && <button className="archive-button" onClick={props.handleUnArchiveAll}>Un-Archive All Calls</button>}
         </div>
       </div>
     </div>

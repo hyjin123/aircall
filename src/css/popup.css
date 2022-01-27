@@ -13,7 +13,7 @@
 .popup-inner {
   position: relative;
   padding: 10px;
-  width: 25%;
+  width: 320px;
   background-color: white;
   border: 1px solid #919191;
   border-radius: 10px;
@@ -72,9 +72,25 @@
 }
 
 .info-container {
-  padding: 15px 20px 15px 5px;
+  padding: 15px 30px 20px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
+}
+
+.date {
+  align-self: center;
+  font-weight: bold;
+
+}
+
+.inner-info span {
+  font-weight: bold;
+}
+
+.inner-info {
+  border: 1px solid rgba(217, 217, 217, 1);
+  padding: 10px;
+  border-radius: 5px;
 }
