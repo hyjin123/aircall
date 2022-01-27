@@ -70,7 +70,7 @@ export default function AllCalls() {
         handleUnArchiveAll={handleUnArchiveAll}
       >
         <div className="info-container">
-          <h3>Are you sure you want to un-archive all calls?</h3>
+          <h3>Are you sure you want to unarchive all calls?</h3>
         </div>
       </ConfirmationPopup>
     </div>

@@ -122,7 +122,7 @@ export default function EachCall(props) {
             {direction.toUpperCase()} Call - ({call_type})
           </div>
           <div className="inner-info">{duration} seconds</div>
-          <div className="inner-info">via {via}</div>
+          <div className="inner-info"><span>via:</span> {via}</div>
         </div>
       </Popup>
     </div>
