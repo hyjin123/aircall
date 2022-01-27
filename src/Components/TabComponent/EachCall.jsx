@@ -97,6 +97,7 @@ export default function EachCall(props) {
           {/* if call to information is null, display unknown */}
           {call_type === "answered" && <div className="call-to">{`called ${to === null ? 'Unknown' : to}`}</div>}
           {call_type === "missed" && <div className="call-to">{`tried to call ${to === null ? 'Unknown' : to}`}</div>}
+          {call_type === "voicemail" && <div className="call-to">{`left voicemail for ${to === null ? 'Unknown' : to}`}</div>}
         </div>
         <div className="call-time">
           <div>{time}</div>
@@ -115,7 +116,8 @@ export default function EachCall(props) {
             {month}, {day} {year} - {time}
           </div>
           <div className="inner-info"><span>From:</span> {from}</div>
-          <div className="inner-info"><span>To:</span> {to}</div>
+          {to !== null && <div className="inner-info"><span>To:</span> {to}</div>}
+          {to === null && <div className="inner-info"><span>To:</span> Unknown</div>}
           <div className="inner-info">
             {direction.toUpperCase()} Call - ({call_type})
           </div>
